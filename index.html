@@ -53,72 +53,28 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2014-08-06T13:09:37.000Z"><a href="/2014/08/06/new-post/">8月 6 2014</a></time>
+        <time datetime="2014-08-06T14:25:03.000Z"><a href="/2014/08/06/使用github和hexo搭建博客/">8月 6 2014</a></time>
       
       
   
-    <h1 class="title"><a href="/2014/08/06/new-post/">new post</a></h1>
+    <h1 class="title"><a href="/2014/08/06/使用github和hexo搭建博客/"></a></h1>
   
 
     </header>
     <div class="entry">
       
-        <h1 id="使用Github_&amp;_hexo_搭建个人博客">使用Github &amp; hexo 搭建个人博客</h1>
-<p> 第一篇文章，记录下这个博客的来历吧。</p>
-<h3 id="为什么是Github&amp;Hexo"><strong>为什么是Github&amp;Hexo</strong></h3>
-<p> 其实一开始我只是想尝试一下github这个被称作“程序员的Facebook”这个东西的。在了解了github在天才的程序员们手里的各种玩法之后，觉得应该从这个平台上学习些东西，于是希望有个东西能够记录我的成长。正好看到github可以搭建博客，便开始好好利用google嗨起来了。</p>
-<p> 一开始在网上搜到的最多的教程其实是使用github和jekyll搭建博客，加上官网的推荐，我一开始的尝试也是使用jekyll。可是倒腾了一天，总是有些各种各样的问题。毕竟我是学微电子技术的，CSS神马的完全不知道怎么回事，因此走了不少弯路。<strong>以后有机会一定要好好学习下CSS！</strong></p>
-<p> 后来在知乎上看到了有大神说可以使用github加hexo搭建，于是搜索下相关文章，看起来一副很简单的样子，果断走起！</p>
-<p> 在此特别感谢 <a href="http://zipperary.com/" target="_blank" rel="external">赵伟zippera</a> 博客的帮助！</p>
-<p> 下面我们进入正题：仅限（Windows）</p>
-<h3 id="搭建Hexo"><strong>搭建Hexo</strong></h3>
-<p>  首先我们要在本地搭建hexo博客。</p>
-<h4 id="安装git"><strong>安装git</strong></h4>
-<h4 id="安装Node-js"><strong>安装Node.js</strong></h4>
-<p>  这两步都不必多说，大家在网上下载安装最新的版本即可，就不贴网址了。</p>
-<h4 id="安装hexo"><strong>安装hexo</strong></h4>
-<p>  安装完git之后，在桌面会出现一个git bash的图标。双击之打开命令行。</p>
-<p>  使用npm命令安装hexo</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm <span class="operator"><span class="keyword">install</span> -g hexo</span></div></pre></td></tr></table></figure>
-
-<h4 id="初始化文件夹"><strong>初始化文件夹</strong></h4>
-<p>  在任意地方新建一个文件夹(如E:\hexo)，然后右键该文件夹，选择git bash，使用以下命令：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo <span class="keyword">init</span></div></pre></td></tr></table></figure>
-
-
-<h4 id="安装依赖包"><strong>安装依赖包</strong></h4>
-<p>  接着刚才：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm <span class="operator"><span class="keyword">install</span></span></div></pre></td></tr></table></figure>
-
-
-<p>  <strong>使用install命令的地方，程序有时候会联网下载，安装的时间和网速有关，请耐心等待</strong></p>
-<h4 id="本地查看"><strong>本地查看</strong></h4>
-<p>  至此，你的博客基本框架已经搭建完成，执行以下命令(仍然在hexo文件夹)：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="title">hexo</span> g</div><div class="line">hexo s</div></pre></td></tr></table></figure>
-
-
-<p>  然后你就可以用浏览器打开<code>localhost:4000</code>查看了。</p>
-<h4 id="部署到github"><strong>部署到github</strong></h4>
-<p>  注册github账号，不多说。</p>
-<p>  创建New repository。这里注意，这个repository的名字应该是<code>你的用户名.github.io</code>。比如我的就是<code>genhaogr.github.io</code></p>
-<p>  接下来，编辑hexo文件夹下的<code>_config.yml</code>:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="label">deploy:</span></div><div class="line"><span class="label">type:</span> github</div><div class="line"><span class="label">repository:</span> https://github.com/genhaogr/genhaogr.github.io.git</div><div class="line"><span class="label">branch:</span> master</div></pre></td></tr></table></figure>
-
-
-<p>  <strong>注意将上面代码的<code>genhaogr</code>换成你的id</strong></p>
-<p>  上传到github：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="title">hexo</span> g</div><div class="line">hexo d</div></pre></td></tr></table></figure>
-
-
-<p>  在需要填写账户名密码的地方填上就行。另外，<strong>密码是不会显示出来的，连星号都不会有哦，只管输就是了</strong></p>
-<p>  <strong>注意：每次修改hexo的内容后都需要<code>hexo g</code>,<code>hexo s</code>后本地才能看到。而<code>hexo g``hexo d</code>后，你的网页才会更新。</strong></p>
-<p>  好了，至此，你的博客已经搭建好了。去<code>genhaogr.github.io</code>看看你的成果吧。</p>
-<p>  <strong>对了，由于某些原因，部署到github上的网页要等最多10分钟才能上线，所以，如果粗线404界面你可不要着急哦！</strong></p>
-
+        <p>title: 使用github和hexo搭建博客<br>date: 2014-08-06 22:25:03<br>tags: hexo</p>
+<h2 id="categories:hexo">categories:hexo</h2>
+<h1 id="使用Github_&amp;_hexo_搭建个人博客">使用Github &amp; hexo 搭建个人博客</h1>
+<p> 第一篇文章，记录下这个博客的来历吧。
       
     </div>
     <footer>
       
+        
+          <div class="alignleft">
+            <a href="/2014/08/06/使用github和hexo搭建博客/#more" class="more-link">Read More</a>
+          </div>
         
         
       
@@ -146,29 +102,15 @@
     </header>
     <div class="entry">
       
-        <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">trobuleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start">Quick Start</h2>
-<h3 id="Create_a_new_post">Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server">Run server</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files">Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
+        <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">trobuleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.
       
     </div>
     <footer>
       
+        
+          <div class="alignleft">
+            <a href="/2014/08/05/hello-world/#more" class="more-link">Read More</a>
+          </div>
         
         
       
