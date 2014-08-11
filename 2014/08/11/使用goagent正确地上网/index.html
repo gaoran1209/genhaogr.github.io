@@ -1,0 +1,201 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>使用goagent正确地上网 | Genhaogr</title>
+  <meta name="author" content="genhaogr">
+  
+  <meta name="description" content="genhaogr blog">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="使用goagent正确地上网"/>
+  <meta property="og:site_name" content="Genhaogr"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="/atom.xml" title="Genhaogr" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Genhaogr</a></h1>
+  <h2><a href="/">If you really want it !</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">主页</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+      <li><a href="/about">关于</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-08-11T09:48:22.000Z"><a href="/2014/08/11/使用goagent正确地上网/">8月 11 2014</a></time>
+      
+      
+  
+    <h1 class="title">使用goagent正确地上网</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>这次整理一下之前使用goagent科学地上网的经验，将过程分享给大家。</p>
+<h4 id="什么是goagent？"><strong>什么是goagent？</strong></h4>
+<p>goAgent是一个基于Google Appengine的，全面兼容IE，FireFox，chrome的代理工具，使用Python和Google App EngineSDK编写，程序可以在Microsoft Windows，Mac，Linux，Android，iPod，Touch，iPhone，iPad，webOS，OpenWrt，Maemo上使用。使用的是美国加利福尼亚州山景城Google数据中心IP段。<br>个人感觉，使用goagent为chrome做插件进行科学上网，相对于其他使用VPN等全局代理而言，优点在于：1.免费；2.非全局。第一点就不用解释了。第二点是指对于使用qq、玩国服游戏等等这些非浏览器内的网络应用，同时又不需要代理操作时，goagent正好可以满足只在浏览器内运行的要求。<br>  接下来就上干货了！<a id="more"></a></p>
+<h4 id="申请Google_APP_Engine并创建appid"><strong>申请Google APP Engine并创建appid</strong></h4>
+<p><a href="https://appengine.google.com" target="_blank" rel="external">申请注册一个google app engine账号</a>.没有gmail的先注册一个，使用gmail登录。<br>点Create an application<br>输入你的手机号码，记得加上中国区号+86 例如：+86 13838383838<br>收到短信后验证。然后等待谷歌提示成功开通。<br>成功之后，转入my application页面，点击create an application新建应用<br><strong>注意：</strong>一个gmail账户最多可以创建十个gae应用，每个应用每天1G免费流量。<br>第一个空白处填写你的应用名称，并检查是否可用。第二个空白处填入该应用的描述，随意填。然后点最下面的创建应用。</p>
+<h4 id="运行goagent并部署到google_app_engine"><strong>运行goagent并部署到google app engine</strong></h4>
+<p>1.<a href="https://github.com/genhaogr/goagent" target="_blank" rel="external">下载goagent</a>并解压<br>2.编辑<code>local\proxy.ini</code>,把其中的appid = goagent中的goagent改成你申请的应用名，如果是多个的话使用<code>|</code>隔开。例如：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[gae]</div><div class="line">appid = appid1<span class="localvars">|appid2|appid3</span></div></pre></td></tr></table></figure>
+
+<p>运行goagent.exe<br>双击sever文件夹下的uplaod.bat，输入你上步创建的appid（同时上传多appid在appid之间用 | 隔开,一次只能上传同一个谷歌帐户下的appid）填完按回车。根据提示填你的谷歌帐户邮箱地址，填完按回车。根据提示填你的谷歌帐户密码(注意：如果开启了两步验证，密码应为16位的应用程序专用密码而非谷歌帐户密码，否则会出现AttributeError: can’t set attribute错误），填完按回车。</p>
+<h4 id="运行goagent客户端"><strong>运行goagent客户端</strong></h4>
+<p>导入证书（lacal下的CA.crt文件，安装到“受信任的根证书颁发机构”<br>运行local文件夹中的goagent.exe</p>
+<h4 id="Chrome插件安装"><strong>Chrome插件安装</strong></h4>
+<p>地址栏输入chrome://extensions/后按回车，打开扩展管理页，将local文件夹中的SwitchySharp-0.9-beta-r48.crx拖拽到该页面之后点击确定即可安装。<br>或者，在<a href="https://chrome.google.com/webstore/detail/proxy-switchysharp/dpplabbmogkhghncfbfdeeokoefdjegm" target="_blank" rel="external">chrome应用商店</a>获得。<br>安装之后点击Proxy的图标-&gt;选项-&gt;导入导出，选择<code>SwitchyOptions.bak</code>。确认导入配置。<br>到这里，你就已经可以科学的上网了。</p>
+<p><em>下面，我补充一些我使用时的技巧。</em></p>
+<h4 id="添加到开机自启"><strong>添加到开机自启</strong></h4>
+<p>在<code>C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp</code>中添加goagent的快捷方式即可。<br>不要让杀软拦截</p>
+<h4 id="开机自启后最小化"><strong>开机自启后最小化</strong></h4>
+<p>在local文件夹中的proxy.ini中，修改visible项等于0.即：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">visible </span>=<span class="string"> 0</span></div></pre></td></tr></table></figure>
+
+<p>尽情使用吧！</p>
+<p><em>测试一下插入图片：</em><br><img src="/img/786e2887jw1e3bnmhap9wj.jpg" alt="上传成功"></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+        
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":["mshare","qzone","tsina","weixin","renren","tieba","douban","sqq","t163","duitang","youdao","mail","fbook","twi","linkedin","copy","print"],"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"3","bdPos":"right","bdTop":"104.5"},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+ <nav id="pagination" >
+    
+    
+    <a href="/2014/08/06/使用github和hexo搭建博客/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+
+<section id="comment">
+
+<!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="请将此处替换成文章在你的站点中的ID" data-title="请替换成文章的标题" data-url="请替换成文章的网址"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"genheogr"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:genhaogr.github.io">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/hexo/">hexo</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/hexo/" style="font-size: NaNpx;">hexo</a>
+  </div>
+</div>
+
+
+  <iframe width="270" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=300&height=550&fansRow=1&ptype=1&speed=0&skin=5&isTitle=1&noborder=1&isWeibo=1&isFans=1&uid=1701384204&verifier=c0177d78&dpc=1"></iframe>
+
+  <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li><a href="https://github.com/genhaogr" title="genhaogr's github">github</a></li>
+<li><a href="http://www.zhihu.com/people/gen-hao-gr" title="genhaogr's zhihu">知乎</a></li>
+<li><a href="http://weibo.com/gaoran10" title="genhaogr's weibo">weibo</a></li>
+</ul>
+</div>
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2014 genhaogr
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F9d0478849e04c06c96d831aabc4b3a89' 
+</body>
+</html>
+<a href="https://github.com/you"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
