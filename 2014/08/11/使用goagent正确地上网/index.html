@@ -69,23 +69,23 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     <div class="entry">
       
         <p>这次整理一下之前使用goagent科学地上网的经验，将过程分享给大家。</p>
-<h4 id="什么是goagent？"><strong>什么是goagent？</strong></h4>
+<h3 id="什么是goagent？"><strong>什么是goagent？</strong></h3>
 <p>goAgent是一个基于Google Appengine的，全面兼容IE，FireFox，chrome的代理工具，使用Python和Google App EngineSDK编写，程序可以在Microsoft Windows，Mac，Linux，Android，iPod，Touch，iPhone，iPad，webOS，OpenWrt，Maemo上使用。使用的是美国加利福尼亚州山景城Google数据中心IP段。<br>个人感觉，使用goagent为chrome做插件进行科学上网，相对于其他使用VPN等全局代理而言，优点在于：1.免费；2.非全局。第一点就不用解释了。第二点是指对于使用qq、玩国服游戏等等这些非浏览器内的网络应用，同时又不需要代理操作时，goagent正好可以满足只在浏览器内运行的要求。<br>  接下来就上干货了！<a id="more"></a></p>
-<h4 id="申请Google_APP_Engine并创建appid"><strong>申请Google APP Engine并创建appid</strong></h4>
+<h3 id="申请Google_APP_Engine并创建appid"><strong>申请Google APP Engine并创建appid</strong></h3>
 <p><a href="https://appengine.google.com" target="_blank" rel="external">申请注册一个google app engine账号</a>.没有gmail的先注册一个，使用gmail登录。<br>点Create an application<br>输入你的手机号码，记得加上中国区号+86 例如：+86 13838383838<br>收到短信后验证。然后等待谷歌提示成功开通。<br>成功之后，转入my application页面，点击create an application新建应用<br><strong>注意：</strong>一个gmail账户最多可以创建十个gae应用，每个应用每天1G免费流量。<br>第一个空白处填写你的应用名称，并检查是否可用。第二个空白处填入该应用的描述，随意填。然后点最下面的创建应用。</p>
-<h4 id="运行goagent并部署到google_app_engine"><strong>运行goagent并部署到google app engine</strong></h4>
+<h3 id="运行goagent并部署到google_app_engine"><strong>运行goagent并部署到google app engine</strong></h3>
 <p>1.<a href="https://github.com/genhaogr/goagent" target="_blank" rel="external">下载goagent</a>并解压<br>2.编辑<code>local\proxy.ini</code>,把其中的appid = goagent中的goagent改成你申请的应用名，如果是多个的话使用<code>|</code>隔开。例如：</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[gae]</div><div class="line">appid = appid1<span class="localvars">|appid2|appid3</span></div></pre></td></tr></table></figure>
 
 <p>运行goagent.exe<br>双击sever文件夹下的uplaod.bat，输入你上步创建的appid（同时上传多appid在appid之间用 | 隔开,一次只能上传同一个谷歌帐户下的appid）填完按回车。根据提示填你的谷歌帐户邮箱地址，填完按回车。根据提示填你的谷歌帐户密码(注意：如果开启了两步验证，密码应为16位的应用程序专用密码而非谷歌帐户密码，否则会出现AttributeError: can’t set attribute错误），填完按回车。</p>
-<h4 id="运行goagent客户端"><strong>运行goagent客户端</strong></h4>
+<h3 id="运行goagent客户端"><strong>运行goagent客户端</strong></h3>
 <p>导入证书（lacal下的CA.crt文件，安装到“受信任的根证书颁发机构”<br>运行local文件夹中的goagent.exe</p>
-<h4 id="Chrome插件安装"><strong>Chrome插件安装</strong></h4>
+<h3 id="Chrome插件安装"><strong>Chrome插件安装</strong></h3>
 <p>地址栏输入chrome://extensions/后按回车，打开扩展管理页，将local文件夹中的SwitchySharp-0.9-beta-r48.crx拖拽到该页面之后点击确定即可安装。<br>或者，在<a href="https://chrome.google.com/webstore/detail/proxy-switchysharp/dpplabbmogkhghncfbfdeeokoefdjegm" target="_blank" rel="external">chrome应用商店</a>获得。<br>安装之后点击Proxy的图标-&gt;选项-&gt;导入导出，选择<code>SwitchyOptions.bak</code>。确认导入配置。<br>到这里，你就已经可以科学的上网了。</p>
 <p><em>下面，我补充一些我使用时的技巧。</em></p>
-<h4 id="添加到开机自启"><strong>添加到开机自启</strong></h4>
+<h3 id="添加到开机自启"><strong>添加到开机自启</strong></h3>
 <p>在<code>C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp</code>中添加goagent的快捷方式即可。<br>不要让杀软拦截</p>
-<h4 id="开机自启后最小化"><strong>开机自启后最小化</strong></h4>
+<h3 id="开机自启后最小化"><strong>开机自启后最小化</strong></h3>
 <p>在local文件夹中的proxy.ini中，修改visible项等于0.即：</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">visible </span>=<span class="string"> 0</span></div></pre></td></tr></table></figure>
 
